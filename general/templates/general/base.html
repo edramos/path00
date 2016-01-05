@@ -1,0 +1,186 @@
+{% load staticfiles %}
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
+<meta name="author" content="Coderthemes">
+<link rel="shortcut icon" href="http://coderthemes.com/ubold_1.2/light/assets/images/favicon_1.ico">
+<title>My Dashboard</title>
+<link href="{% static 'bootstrap-3.3.6/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'theme/core.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'theme/components.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'theme/icons.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'theme/pages.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'theme/responsive.css' %}" rel="stylesheet" type="text/css">
+
+<script src="{% static 'theme/modernizr.js' %}"></script>
+
+<link rel="stylesheet" href="{% static 'material-design-iconic-font/css/material-design-iconic-font.min.css' %}">
+<link rel="stylesheet" href="{% static 'themify-icons/themify-icons.css' %}">
+<link rel="stylesheet" href="{% static 'font-awesome-4.5.0/css/font-awesome.min.css' %}">
+<link rel="stylesheet" href="{% static 'ionicons-2.0.1/css/ionicons.min.css' %}"> 
+<link rel="stylesheet" href="{% static 'simple-line-icons-master/css/simple-line-icons.css' %}">
+
+<link rel="stylesheet" href="{% static 'dataTables-1.10.10/css/jquery.dataTables.min.css' %}">
+<style>
+.nav > li > a {
+    padding: 20px 15px;
+}
+</style>
+</head>
+
+<body class="fixed-left widescreen">
+	
+	<div style="display: none;" class="animationload">
+	    <div style="display: none;" class="loader"></div>
+	</div>
+
+		<!-- Begin page -->
+		<div id="wrapper">
+
+            <!-- Top Bar Start -->
+            <div class="topbar">
+
+                <!-- LOGO -->
+                <div class="topbar-left">
+                    <div class="text-center">
+                        <a href="#" class="logo">
+                        <i class="icon-magnet icon-c-logo"></i><span>Ub<i class="zmdi zmdi-album"></i>ld: {{request.session.idUser}}</span></a>
+                    </div>
+                </div>
+
+                <!-- Button mobile view to collapse sidebar menu -->
+                <div class="navbar navbar-default" role="navigation">
+                    <div class="container">
+                        <div class="">
+                            <div class="pull-left">
+                                <button class="button-menu-mobile open-left" style="padding: 20px 15px;">
+                                    <i class="ion-navicon"></i>
+                                </button>
+                                <span class="clearfix"></span>
+                            </div>
+
+                            <ul class="nav navbar-nav navbar-right pull-right">
+                                <li class="dropdown">
+                                    <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true" style="padding: 12px 15px;">
+                                    <img src="{% static 'theme/avatar-1.jpg' %}" alt="user-img" class="img-circle"> </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{% url 'updateProfile' pk=request.session.idUser %}"><i class="ti-user m-r-5"></i> Profile</a></li>
+                                        <li><a href="{% url 'logoutPage' %}"><i class="ti-power-off m-r-5"></i> Logout</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--/.nav-collapse -->
+                    </div>
+                </div>
+            </div>
+            <!-- Top Bar End -->
+
+
+            <!-- ========== Left Sidebar Start ========== -->
+
+            <div class="left side-menu">
+                <div style="position: relative; overflow: hidden; width: auto; height: 885px;" class="slimScrollDiv"><div style="overflow: hidden; width: auto; height: 885px;" class="sidebar-inner slimscrollleft">
+                    <!--- Divider -->
+                    <div id="sidebar-menu">
+                        <ul>
+
+                        	<li class="text-muted menu-title">Navigation</li>
+
+                            <li class="has_sub">
+                                <a href="{% url 'dashboardPage' %}" class="waves-effect"><i class="ti-home"></i> <span> Dashboard </span> </a>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="{% url 'enterpriseUpdate' pk=request.session.idEnterprise %}" class="waves-effect"><i class="fa fa-building-o"></i> <span> Enterprise </span> </a>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="{% url 'locationsList' %}" class="waves-effect"><i class="ti-location-pin"></i> <span> Locations </span> </a>
+                            </li>
+
+                            <li class="has_sub">
+                                <a href="{% url 'employeePage' %}" class="waves-effect"><i class="ti-user"></i> <span> Employess </span> </a>
+                            </li>
+
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div style="background: rgb(220, 220, 220) none repeat scroll 0% 0%; width: 5px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 547.71px; visibility: visible;" class="slimScrollBar"></div><div style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51) none repeat scroll 0% 0%; opacity: 0.2; z-index: 90; right: 1px;" class="slimScrollRail"></div></div>
+            </div>
+			<!-- Left Sidebar End -->
+
+			<!-- ============================================================== -->
+			<!-- Start right Content here -->
+			<!-- ============================================================== -->
+			<div class="content-page">
+				<!-- Start content -->
+				<div class="content">
+					<div class="container">
+
+						<!-- Page-Title -->
+						<div class="row">
+							<div class="col-sm-12">
+							
+							{% block content %}
+							{% endblock %}	
+								
+							</div>
+						</div>
+
+
+                    </div> <!-- container -->
+                               
+                </div> <!-- content -->
+				
+				
+                <footer class="footer">
+                    2016 © Eduardo Ramos.
+                </footer>
+				
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Right content here -->
+            <!-- ============================================================== -->
+
+
+        </div>
+        <!-- END wrapper -->
+
+        <script>
+            var resizefunc = [];
+        </script>
+
+        <!-- jQuery  -->
+        <script src="{% static 'theme/jquery_007.js' %}"></script>
+        <script src="{% static 'theme/bootstrap.js' %}"></script>
+        <script src="{% static 'theme/detect.js' %}"></script>
+        <script src="{% static 'theme/fastclick.js' %}"></script>
+        <script src="{% static 'theme/jquery_003.js' %}"></script>
+        <script src="{% static 'theme/jquery_006.js' %}"></script>
+        <script src="{% static 'theme/waves.js' %}"></script>
+        <script src="{% static 'theme/wow.js' %}"></script>
+        <script src="{% static 'theme/jquery_005.js' %}"></script>
+        <script src="{% static 'theme/jquery_004.js' %}"></script>
+
+
+        <script src="{% static 'theme/jquery.js' %}"></script>
+        <div style="width: 6px; z-index: 99; cursor: default; position: fixed; top: 60px; left: 1553px; height: 955px; display: none;" class="nicescroll-rails" id="ascrail2001"><div style="position: relative; top: 0px; float: right; width: 6px; height: 0px; background-color: rgb(152, 166, 173); border: 1px solid rgb(255, 255, 255); background-clip: padding-box; border-radius: 5px;"></div></div><div style="height: 6px; z-index: 99; top: 1009px; left: 1319px; position: fixed; cursor: default; display: none;" class="nicescroll-rails" id="ascrail2001-hr"><div style="position: relative; top: 0px; height: 6px; width: 0px; background-color: rgb(152, 166, 173); border: 1px solid rgb(255, 255, 255); background-clip: padding-box; border-radius: 5px;"></div></div>
+        <script src="{% static 'theme/jquery_002.js' %}"></script>
+	
+<!-- <script src="{% static 'jquery-1.11.3.min.js' %}"></script> -->
+<!-- <script src="{% static 'bootstrap-3.3.6/js/bootstrap.min.js' %}"></script> -->
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+<script type="text/javascript" src="{% static 'dataTables-1.10.10/js/jquery.dataTables.min.js' %}"></script>
+{% block localscript %}
+{% endblock %}
+
+{% block script %}
+{% endblock %}
+</body>
+</html>
