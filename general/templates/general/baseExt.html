@@ -1,0 +1,60 @@
+{% load staticfiles %}
+<html class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" style="">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
+        <meta name="author" content="Ed R.">
+
+        <link rel="shortcut icon" href="http://coderthemes.com/ubold_1.2/light/assets/images/favicon_1.ico">
+
+        <title>Paths - Python</title>
+
+    <link href="{% static 'bootstrap-3.3.6/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+	<link href="{% static 'theme/core.css' %}" rel="stylesheet" type="text/css">
+	<link href="{% static 'theme/components.css' %}" rel="stylesheet" type="text/css">
+	<link href="{% static 'theme/icons.css' %}" rel="stylesheet" type="text/css">
+	<link href="{% static 'theme/pages.css' %}" rel="stylesheet" type="text/css">
+	<link href="{% static 'theme/responsive.css' %}" rel="stylesheet" type="text/css">
+        
+</head>
+
+<body class="widescreen">
+
+        <div style="display: none;" class="animationload">
+            <div style="display: none;" class="loader"></div>
+        </div>
+
+        <div class="account-pages"></div>
+        <div class="clearfix"></div>
+        <div class="wrapper-page">
+   
+            {% block content %}
+			{% endblock %}	
+               
+        </div>
+        
+        
+    	<script>
+            var resizefunc = [];
+        </script>
+
+        <!-- jQuery  -->
+         <script src="{% static 'theme/jquery_007.js' %}"></script>
+        <script src="{% static 'theme/bootstrap.js' %}"></script>
+        <script src="{% static 'theme/detect.js' %}"></script>
+        <script src="{% static 'theme/fastclick.js' %}"></script>
+        <script src="{% static 'theme/jquery_003.js' %}"></script>
+        <script src="{% static 'theme/jquery_006.js' %}"></script>
+        <script src="{% static 'theme/waves.js' %}"></script>
+        <script src="{% static 'theme/wow.js' %}"></script>
+        <script src="{% static 'theme/jquery_005.js' %}"></script>
+        <script src="{% static 'theme/jquery_004.js' %}"></script>
+        
+        <script src="{% static 'theme/jquery_002.js' %}"></script>
+        <script src="{% static 'theme/jquery.js' %}"></script>
+	
+	
+</body>
+</html>

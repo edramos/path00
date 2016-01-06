@@ -1,3 +1,7 @@
 from django.shortcuts import render
 
-# Create your views here.
+def toSignup(request):
+    return render(request, 'users/signup.html')
+
+def toLogin(request):
+    return render(request, 'users/login.html')

@@ -1692,7 +1692,7 @@
    Accounts pages
 ============= */
 .account-pages {
-  background: url("../images/agsquare.png");
+  background: url("../theme/images/agsquare.png");
   position: absolute;
   height: 100%;
   width: 100%;

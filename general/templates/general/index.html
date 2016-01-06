@@ -1,0 +1,9 @@
+{% extends 'general/baseExt.html' %}
+
+{% block content %}
+<h1>Welcome to Paths</h1>
+<div class="row">
+	<button onclick="location.href='{% url 'loginPage' %}';" class="btn btn-default">Log in</button>
+	<button onclick="location.href='{% url 'signupPage' %}';" class="btn btn-default">Sign up</button>
+</div>
+{% endblock %}
