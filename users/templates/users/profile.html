@@ -1,0 +1,55 @@
+{% extends 'general/baseApp.html' %}
+
+{% block content %}
+<div class="panel panel-default panel-border">
+	<div class="panel-heading">
+		<h3 class="panel-title">Profile</h3>
+	</div>
+	<div class="panel-body" style="height: 79%">
+	
+		<form class="form-horizontal" action="" method="post"> 
+		{% csrf_token %}    
+			<div class="col-md-6">
+				<div class="form-group">
+	                <label class="col-md-4 control-label">First Name</label>
+	                <div class="col-md-8">
+	                    <input class="form-control" placeholder="First Name" type="text" name="firstName" value="{{profile.firstName}}">
+	                </div>
+	            </div>
+	            <div class="form-group">
+					<label class="col-md-4 control-label">Last Name</label>
+	                <div class="col-md-8">
+	                    <input class="form-control" placeholder="Last Name" type="text" name="lastName" value="{{profile.lastName}}">
+	                </div>
+				</div>
+	            <div class="form-group">
+	                <label class="col-md-4 control-label"></label>
+	                <div class="col-md-8">
+	                     <button type="submit" class="btn btn-success waves-effect waves-light">Update</button>
+	                </div>
+	            </div>      
+			</div>
+			
+			<div class="col-md-6">
+				<div class="form-group">
+	            	<label class="col-md-4 control-label">Telephone</label>
+	                <div class="col-md-8">
+	                    <input class="form-control" placeholder="Telephone" type="text" name="telephone" value="{{profile.telephone}}">
+	                </div>
+	            </div>
+				<div class="form-group">
+	                <label class="col-md-4 control-label">Role</label>
+	                <div class="col-md-8">
+	                	<select class="form-control" name="role">
+	                		<option>Administrator</option>
+	                		<option>Developer</option>
+	                	</select>
+	                </div>
+	            </div>
+			</div>
+		    
+		</form>
+        
+	</div>
+</div>
+{% endblock %}
