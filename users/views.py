@@ -3,11 +3,25 @@ from django.db import transaction
 from django.http.response import HttpResponseRedirect
 from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
-from users.forms import UserForm
+from django.views.generic.edit import UpdateView
+from django.core.urlresolvers import reverse
+from django.contrib.auth import logout
+
+from users.forms import UserForm, ProfileForm
 from enterprises.models import Enterprise
 from locations.models import Location
 from users.models import User, Profile
 
+
+
+class EditProfile(UpdateView):
+    model = Profile
+    template_name = "users/profile.html"
+    form_class = ProfileForm
+    
+    def get_success_url(self):
+        return reverse('updateProfile', kwargs={'pk': self.kwargs['pk']})
+    
 
 def toSignup(request):
     return render(request, 'users/signup.html')
@@ -82,7 +96,11 @@ def toLocation(request):
 def toEmployee(request):
     return render(request, 'users/employee.html')
         
-        
+def toLogout(request):
+    #Needs implement real logout
+    logout(request)
+    messages.info(request, 'Thanks')
+    return HttpResponseRedirect('/login')
         
         
         
