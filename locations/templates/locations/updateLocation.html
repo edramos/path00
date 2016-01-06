@@ -1,0 +1,89 @@
+{% extends 'general/baseApp.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="panel panel-default panel-border">
+	<div class="panel-heading">
+		<h3 class="panel-title">Update Location</h3>
+	</div>
+	
+	<div class="panel-body" style="height: 79%">
+		
+		<form id="frmAddLocation" class="form-horizontal" action="" method="post">
+			{% csrf_token %}
+			<div class="col-md-4">
+				<div class="form-group">
+					<input id="txtName" class="form-control" placeholder="Name" type="text" name="name" value="{{ location.name }}">
+				</div>
+			</div>
+			<div class="col-md-7">
+				<input data-geo="formatted_address" id="txtAddress" class="form-control" placeholder="Address" type="text" name="formatted_address">
+			</div>
+			<div class="col-md-1">
+				<div class="form-group">
+					<button type="submit" class="btn btn-success waves-effect waves-light">Update</button>
+				</div>
+			</div>
+			<input id="hdnStreetNumber" data-geo="street_number" type="hidden">
+			<input id="hdnAddress" data-geo="route_short" type="hidden" name="address" value="{{ location.address }}">
+			<input id="hdnLocality" data-geo="locality" type="hidden" name="city" value="{{ location.city }}">
+			<input id="hdnSublocality" data-geo="sublocality" type="hidden" name="sublocality">
+			<input data-geo="administrative_area_level_1_short" type="hidden" name="usState" value="{{ location.usState }}">
+			<input data-geo="postal_code" type="hidden" name="zipCode" value="{{ location.zipCode }}">
+			<input data-geo="lat" type="hidden" name="lat" value="{{ location.lat }}">
+			<input data-geo="lng" type="hidden" name="lng" value="{{ location.lng }}">
+			<input type="hidden" name="enterprise" value="{{ request.session.idEnterprise }}">
+		</form>
+		
+		<div id="divMyGMap" style="width: 100%;height: 93%;"></div>
+				
+	</div>
+		
+</div>
+{% endblock %}
+{% block localscript %}
+<script src="{% static 'jquery.validate.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'geocomplete-1.6.5/jquery.geocomplete.min.js' %}" type="text/javascript"></script>
+{% endblock %}
+
+{% block script %}
+<script>
+$(document).ready(function(){
+	var address = $('input[name=address]').val();
+	var city = $('input[name=city]').val();
+	
+	$('#txtAddress').geocomplete({
+		map: document.getElementById('divMyGMap'),
+		details: "form",
+		detailsAttribute: "data-geo"
+	});
+	
+	if(address != ''){
+		var formatted_address = address + ', ' + city + ', ' + $('input[name=usState]').val() + ' ' + $('input[name=zipCode]').val()
+		
+		$('#txtAddress').val(formatted_address);
+		$('#txtAddress').trigger("geocode");
+	}
+	
+	
+	$('#frmAddLocation').validate({
+		submitHandler: function(form){
+			var city = "";
+				
+			if($("#hdnLocality").val() != ''){
+				city = $('#hdnLocality').val();
+			}else{
+				city = $('#hdnSublocality').val();
+			}
+			
+			$('#hdnLocality').val(city);
+			$('#hdnAddress').val($('#hdnStreetNumber').val() + ' ' + $('#hdnAddress').val());
+			
+			form.submit();
+		}
+	});
+});
+
+
+</script>
+{% endblock %}
