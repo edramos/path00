@@ -81,10 +81,10 @@ WSGI_APPLICATION = 'path00.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'path',
-        'USER': 'root',
-        'PASSWORD': '1234',
-        'HOST': '',
+        'NAME': 'edrams$default',
+        'USER': 'edrams',
+        'PASSWORD': '12341234',
+        'HOST': 'edrams.mysql.pythonanywhere-services.com',
         'PORT': '',
     }
 }
